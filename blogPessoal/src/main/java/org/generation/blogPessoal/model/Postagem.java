@@ -1,3 +1,6 @@
+// serve como uma forma, determina como uma tabela sera no banco de dados
+// cada model representa uma tabela diferente no banco de dados
+
 package org.generation.blogPessoal.model;
 
 import java.util.Date;
@@ -14,23 +17,23 @@ import javax.validation.constraints.Size;
 import com.sun.istack.NotNull;
 
 
-@Entity
-@Table(name = "postagem")
+@Entity //necessario para se tornar uma tabela com o JPA
+@Table(name = "postagem") //sobrescreve o nome da tabela
 public class Postagem {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id //para se tornar o id da tabela
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //funcao de auto-increment
 	private long id;
 	
-	@NotNull
-	@Size(min=5, max=100)
+	@NotNull //restriçao para coluna nao seja null
+	@Size(min=5, max=100) // determinar size minimo e maximo
 	private String titulo;
 	
 	@NotNull
 	@Size(min=10, max=500)
 	private String texto;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP) //salva exatamente a data corrente 
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
 	public long getId() {

@@ -1,3 +1,5 @@
+// responsavel em comunicar esta camada backend com o banco de dados
+
 package org.generation.blogPessoal.repository;
 
 import java.util.List;
@@ -11,4 +13,5 @@ public interface PostagemRepository extends JpaRepository<Postagem, Long>{
 	
 	public List<Postagem> findAllByTituloContainingIgnoreCase (String titulo);
 	
+	public Postagem findByTituloIgnoreCase (String titulo);
 }
