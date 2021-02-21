@@ -1,41 +1,32 @@
 <div class="container-fluid">
-
-    <div class="row d-flex align-items-center">
-
-        <div class="col-md-6">
-            <div class="row d-flex justify-content-center ">
-                <div class="col-md-6">
-
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-3 img-bg"></div>
+            <div class="col-md-6 justify-content-center d-flex flex-column align-items-center">
+                <div class="former-content m-3">
                     <h1 class="text-center m-3">Entrar</h1>
                     <div class="form-group">
                         <label for="usuario"></label>
                         <input class="form-control" type="text" name="usuario" id="usuario"
                         placeholder="Seu usuário">
                     </div>
-
+    
                     <div class="form-group">
                         <label for="senha"></label>
                         <input class="form-control" type="password" name="senha" id="senha"
                         placeholder="Sua senha">
                     </div>
-
+    
                     <div class="d-flex justify-content-center">
                         <button class="btn btn-success" type="submit">Entrar</button>
                     </div>
-
-                    <hr class="mt-5 mb-5">
+    
+                    <hr class="mt-3 mb-3">
 
                     <p class="text-center">
-                        Não tem uma conta? <a href="">Cadastre-se</a>
+                        Não tem uma conta? <a routerLink='/cadastrar'>Cadastre-se</a>
                     </p>
                 </div>
-
             </div>
+            <div class="col-md-3 img-bg" style="background-position: center;"></div>
         </div>
-
-        <div class="col-md-6" id="img-bg"></div>
-
-    </div>
-
-
 </div>
