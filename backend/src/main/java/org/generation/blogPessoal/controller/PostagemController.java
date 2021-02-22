@@ -64,7 +64,7 @@ public class PostagemController {
 		repository.deleteById(id);
 	}
 	
-	@GetMapping("/titulouUnico/{titulo}")
+	@GetMapping("/titulounico/{titulo}")
 	public ResponseEntity<Postagem> GetByTituloUnico(@PathVariable String titulo){
 		return ResponseEntity.ok(repository.findByTituloIgnoreCase(titulo));
 	}
