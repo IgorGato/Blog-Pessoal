@@ -1,9 +1,27 @@
-#img-bg{
 
-    background-image: url('https://i.imgur.com/w3d95jN.jpg');
-    height: 695px;
-    background-position: center;
+.img-bg{
+
+    background-image: url('../../assets/imagens/5010787.jpg');
+    height: 100vh;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
+}
 
+.former-content{
+    min-width: 380px; 
+    background-color: #fff;
+}
+
+@media (max-width: 768px){
+    .img-bg{
+        height: 10vh;
+        width: 100vw;
+    }
+
+    .former-content{
+        top: 35px;
+        border: 1px #000 solid;
+        min-width: 320px; 
+    }
 }
