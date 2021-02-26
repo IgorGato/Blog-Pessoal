@@ -12,7 +12,7 @@
     
                     <div class="form-group">
                         <label for="senha"></label>
-                        <input [(ngModel)]='userLogin.senha' class="form-control" type="password" name="senha" id="senha"
+                        <input [(ngModel)]='userLogin.senha' (keyup.enter)='entrar()' class="form-control" type="password" name="senha" id="senha"
                         placeholder="Sua senha">
                     </div>
     
