@@ -42,7 +42,8 @@
         href="#minhasPostagens" role="tab" aria-controls="nav-minhasPostagens" aria-selected="false">Minhas
         Postagens</a>
 
-      <a class="nav-item nav-link text-secondary font-weight-bold"
+      <a (click)='getAllTemas()'
+        class="nav-item nav-link text-secondary font-weight-bold"
         id="nav-postagemTema-tab" data-toggle="tab" href="#postagemTema" role="tab" aria-controls="nav-postagemTema"
         aria-selected="false">Postagens por tema</a>
 
@@ -57,13 +58,7 @@
 
     <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
 
-      <div class="row d-flex justify-content-center mt-5 mb-5">
-        <div class="col-md-4">
-          <div class="form-group">
-            <input type="text" class="form-control" id="titulo" placeholder="Digite um titulo de postagem para pesquisar">
-          </div>
-        </div>
-      </div>
+      
 
       <div class="card-columns">
         <div class="card text-center"
@@ -109,15 +104,7 @@
 
     <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="nav-postagemTema-tab">
 
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-4">
-
-          <div class="form-group mb-5">
-            <input type="text" class="form-control" id="tituloPesquisa" placeholder="Digite um tema para pesquisar">
-          </div>
-
-        </div>
-      </div>
+      
 
       <div class="card-columns" *ngFor='let tema of listaTemas'>
         <div class="card text-center" *ngFor='let item of tema.postagem'>
