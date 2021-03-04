@@ -93,8 +93,8 @@
                 {{item.date | date: 'dd/MM/yyyy'}} às {{item.date | date: 'HH:mm'}}
               </small></p>
 
-            <a [routerLink]="['/postagem-edit', item.id]" class="text-info mr-3" href="">Editar</a>
-            <a [routerLink]="['/postagem-delete', item.id]" class="text-danger" href="">Apagar</a>
+            <button data-toggle="modal" data-target="#modalEditar" class="mr-3 btn btn-info" (click)="findPostagemById(item.id)">Editar</button>
+            <button data-toggle="modal" data-target="#modalExcluir" class="btn btn-danger" (click)="getIdPostagem(item.id)">Apagar</button>
 
           </div>
         </div>
@@ -132,7 +132,7 @@
 
 
 
-<!-- Modal -->
+<!-- Modal Publicar -->
 <div class="modal fade" id="novaPostagem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -174,3 +174,59 @@
     </div>
   </div>
 </div>
+
+
+
+  <!-- Modal Editar -->
+  <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarLabel">Título do modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+              <label for="titulo">Titulo</label>
+              <input [(ngModel)]='altPostagem.titulo' type="text" id="titulo" class="form-control">
+
+              <label for="texto">Texto</label>
+              <input [(ngModel)]='altPostagem.texto' type="text" id="texto" class="form-control">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)= "atualizarPostagem()" >Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Excluir -->
+  <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalExcluirLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalExcluirLabel">Excluir postagem</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div>
+            <p>Tem certeza que deseja excluir esta postagem?</p> 
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger"  data-dismiss="modal" (click)= "excluirPostagem()" >Excluir </button>
+        </div>
+      </div>
+    </div>
+  </div>

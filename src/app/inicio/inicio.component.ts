@@ -16,14 +16,19 @@ import { TemaService } from '../service/tema.service';
 export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
+  altPostagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
 
+  item: any
+
   user: User = new User()
   idUser = environment.id
+
+  idPostagem: number
 
   constructor(
     private router: Router,
@@ -66,17 +71,21 @@ export class InicioComponent implements OnInit {
 
   findByIdUser(){
     this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
+      
       this.user = resp
+      console.log(this.user)
     })
   }
 
   publicar(){
+    
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
 
     this.user.id = this.idUser
     this.postagem.usuario = this.user
 
+    console.log(this.postagem)
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       alert('Postagem realizada com sucesso!')
@@ -84,8 +93,41 @@ export class InicioComponent implements OnInit {
       this.getAllPostagens()
       this.getAllTemas()
       this.findByIdUser()
+      this.postagem = new Postagem()
+      this.idTema = 0
     })
 
+  }
+
+  getIdPostagem(id: number){
+    this.idPostagem = id;
+  }
+
+  findPostagemById(id: number) {
+    this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
+      this.altPostagem = resp;
+      console.log(this.postagem)
+    });
+  }
+
+  atualizarPostagem(){
+
+    console.log(this.altPostagem)
+
+    this.postagemService.putPostagem(this.altPostagem).subscribe((resp: Postagem) => {
+      this.altPostagem = resp
+      this.findByIdUser();
+      alert('Postagem atualizada com sucesso!');
+      console.log(this.altPostagem)
+      this.altPostagem = new Postagem()
+    })
+  }
+
+  excluirPostagem(){  
+    this.postagemService.deletePostagem(this.idPostagem).subscribe(() => {
+      this.findByIdUser();
+      alert ('Postagem excluída com sucesso!');
+    })
   }
 
 }
