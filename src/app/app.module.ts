@@ -15,6 +15,8 @@ import { TemaComponent } from './tema/tema.component';
 import { TemaEditComponent } from './edit/tema-edit/tema-edit.component';
 import { TemaDeleteComponent } from './delete/tema-delete/tema-delete.component';
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
+import { AlertaComponent } from './alerta/alerta.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -28,13 +30,15 @@ import { UserEditComponent } from './edit/user-edit/user-edit.component';
     TemaComponent,
     TemaEditComponent,
     TemaDeleteComponent,
-    UserEditComponent
+    UserEditComponent,
+    AlertaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [{
     provide: LocationStrategy,

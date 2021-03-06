@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './../../service/auth.service';
 import { User } from './../../model/User';
 import { Component, OnInit } from '@angular/core';
+import { AlertasService } from 'src/app/service/alertas.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -20,6 +21,7 @@ export class UserEditComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
+    private alerta: AlertasService
   ) { }
 
   ngOnInit() {
@@ -45,7 +47,7 @@ export class UserEditComponent implements OnInit {
     this.user.tipo = this.tipoUsuario
 
     if (this.user.senha != this.confirmarSenha) {
-      alert('A senhas estão incorretas.')
+      this.alerta.showAlertInfo('A senhas estão incorretas.')
     } else {
       this.authService.cadastrar(this.user).subscribe((resp: User) => {
         this.user = resp
