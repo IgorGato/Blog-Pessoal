@@ -34,12 +34,15 @@ export class InicioComponent implements OnInit {
   key = 'date'
   reverse = true
 
+  tituloPost: string
+  nomeTema: string
+
   constructor(
     private router: Router,
     private postagemService: PostagemService,
     private temaService: TemaService,
     private authService: AuthService,
-    private alerta: AlertasService
+    private alerta: AlertasService,
   ) { }
 
   ngOnInit(){
@@ -47,7 +50,7 @@ export class InicioComponent implements OnInit {
     
     if(environment.token == ''){
       
-      alert('Sua seção expirou, faça o login novamente')
+      this.alerta.showAlertDanger('Sua seção expirou, faça o login novamente')
       this.router.navigate(['/entrar'])
     }
 
@@ -116,9 +119,6 @@ export class InicioComponent implements OnInit {
   }
 
   atualizarPostagem(){
-
-    console.log(this.altPostagem)
-
     this.postagemService.putPostagem(this.altPostagem).subscribe((resp: Postagem) => {
       this.altPostagem = resp
       this.findByIdUser();
@@ -133,6 +133,29 @@ export class InicioComponent implements OnInit {
       this.findByIdUser();
       this.alerta.showAlertSuccess('Postagem excluída com sucesso!');
     })
+  }
+
+
+
+  findByTituloPostagem(){
+    if(this.tituloPost == ''){
+      this.getAllPostagens()
+    }else{
+      this.postagemService.getAllPostagensByTitulo('qu').subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
+      })
+    }
+  }
+
+  findByTema(){
+    console.log(this.nomeTema)
+    if(this.nomeTema == ''){
+      this.getAllTemas()
+    }else{
+      this.temaService.getAllTemasByNome(this.nomeTema).subscribe((resp: Tema[]) => {
+        this.listaTemas = resp
+      })
+    }
   }
 
 }
