@@ -31,6 +31,9 @@ export class InicioComponent implements OnInit {
 
   idPostagem: number
 
+  key = 'date'
+  reverse = true
+
   constructor(
     private router: Router,
     private postagemService: PostagemService,
