@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { logging } from 'selenium-webdriver';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -18,6 +19,7 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // this.loging()
   }
 
   sair(){
@@ -26,5 +28,11 @@ export class MenuComponent implements OnInit {
     environment.foto = ''
     environment.token = ''
     environment.id = 0
+  }
+
+  loging(){
+    if(this.router.url.includes('entrar')){
+      environment.token = ''
+    }
   }
 }

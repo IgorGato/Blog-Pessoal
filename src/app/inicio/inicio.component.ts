@@ -81,7 +81,6 @@ export class InicioComponent implements OnInit {
     this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
       
       this.user = resp
-      console.log(this.user)
     })
   }
 
